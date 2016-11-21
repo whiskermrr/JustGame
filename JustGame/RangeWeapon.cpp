@@ -77,7 +77,7 @@ sf::Vector2f RangeWeapon::getVelocity()
 
 RangeWeapon::~RangeWeapon()
 {
-	delete this->bulletHandler;
-	delete this->bullet;
+	this->bullet = NULL;
+	this->bulletHandler = NULL;
 }
 

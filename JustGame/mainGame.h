@@ -4,8 +4,7 @@
 
 #include "state.h"
 #include "TileMap.h"
-#include "Player.h"
-#include "BulletHandler.h"
+#include "EntityHandler.h"
 
 
 class mainGame :
@@ -22,8 +21,7 @@ public:
 private:
 
 	TileMap* tileMap;
-	Player* playerOne;
-	BulletHandler* bulletHandler;
+	EntityHandler* entityHandler;
 };
 
 extern bool reset;

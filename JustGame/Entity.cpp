@@ -22,7 +22,8 @@ bool Entity::CheckCollision(Entity* gameObject)
 	return this->getGlobalBounds().intersects(gameObject->getGlobalBounds());
 }
 
-void Entity::Destroy()
+Entity::~Entity()
 {
 	delete this->texture;
+	this->texture = NULL;
 }

@@ -94,5 +94,13 @@ TileMap::~TileMap()
 	delete this->stoneTile;
 	delete this->grassTile;
 	delete this->railTile;
+
+	this->grassTexture = NULL;
+	this->stoneTexture = NULL;
+	this->railTexture = NULL;
+
+	this->stoneTile = NULL;
+	this->railTile = NULL;
+	this->grassTile = NULL;
 }
 

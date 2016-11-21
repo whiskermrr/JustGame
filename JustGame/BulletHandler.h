@@ -12,9 +12,9 @@ class BulletHandler
 public:
 
 	BulletHandler();
-	void Update(sf::RenderWindow* window);
+	void Update();
 	void Render(sf::RenderWindow* window);
-	void Destroy(sf::RenderWindow* window);
+	~BulletHandler();
 	void Reset(sf::RenderWindow* window);
 	void addBullet(Bullet* bullet);
 

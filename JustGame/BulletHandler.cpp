@@ -7,7 +7,7 @@ BulletHandler::BulletHandler()
 	this->bulletVector = new std::vector<Bullet*>();
 }
 
-void BulletHandler::Update(sf::RenderWindow* window)
+void BulletHandler::Update()
 {
 	std::for_each(this->bulletVector->begin(), this->bulletVector->end(), [](Bullet* it) {it->Update(); });
 
@@ -29,7 +29,7 @@ void BulletHandler::Render(sf::RenderWindow* window)
 	std::for_each(this->bulletVector->begin(), this->bulletVector->end(), [&window](Bullet* it) { window->draw(*it); });
 }
 
-void BulletHandler::Destroy(sf::RenderWindow* window)
+BulletHandler::~BulletHandler()
 {
 	for (std::vector<Bullet*>::iterator it = this->bulletVector->begin(); it != this->bulletVector->end(); it++)
 	{

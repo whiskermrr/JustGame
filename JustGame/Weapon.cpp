@@ -30,4 +30,5 @@ double Weapon::getDamage()
 Weapon::~Weapon()
 {
 	delete this->texture;
+	this->texture = NULL;
 }

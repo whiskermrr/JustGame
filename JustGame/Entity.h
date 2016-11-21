@@ -13,7 +13,7 @@ public:
 	void LoadTexture(std::string file);
 	void Update();
 	bool CheckCollision(Entity* gameObject);
-	void Destroy();
+	~Entity();
 
 private:
 

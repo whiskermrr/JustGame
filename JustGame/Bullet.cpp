@@ -18,5 +18,5 @@ void Bullet::Update()
 
 Bullet::~Bullet()
 {
-	Entity::Destroy();
+	Entity::~Entity();
 }

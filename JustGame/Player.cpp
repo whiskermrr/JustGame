@@ -76,7 +76,8 @@ void Player::Render(sf::RenderWindow* window)
 
 Player::~Player()
 {
-	delete this->bulletHandler;
 	delete this->rangeWeapon;
+	this->rangeWeapon = NULL;
+	this->bulletHandler = NULL;
 }
 
