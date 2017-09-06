@@ -8,7 +8,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "mrr");
 
-	window.setFramerateLimit(60);
+	window.setFramerateLimit(300);
 
 	mainState.setWindow(&window);
 	mainState.setState(new mainGame());

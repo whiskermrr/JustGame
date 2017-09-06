@@ -10,12 +10,11 @@ RangeWeapon::RangeWeapon(BulletHandler* bulletHandler, sf::Vector2f position)
 void RangeWeapon::Update()
 {
 	Weapon::Update(); 
-
-	this->calculateAim();
 }
 
 void RangeWeapon::shot()
 {
+	this->calculateAim();
 	this->bullet = new Bullet(this->getPosition(), this->getVelocity(), this->angle);
 	this->bulletHandler->addBullet(bullet);
 }

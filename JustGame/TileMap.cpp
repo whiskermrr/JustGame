@@ -15,24 +15,22 @@ TileMap::TileMap(std::string fileName)
 		{
 			char x;
 			openFile >> x;
-			columnCounter = 0;
 
 			if (isdigit(x))
 			{
-				this->map->push_back(new Tile(x - '0'));	
+				Tile* tile = new Tile(x - '0');
+				tile->setPosition(columnCounter * 32, rowCounter * 32);
+				this->map->push_back(tile);
 				columnCounter++;
 			}
 
 			if (openFile.peek() == '\n')
 			{
 				rowCounter++;
+				columnCounter = 0;
 			}
 		}
 	}
-
-	columnCounter = 44;
-
-	std::cout << "Rows: " << rowCounter << " Columns: " << columnCounter << std::endl;
 }
 
 std::vector<Tile*>* TileMap::getTiles()
@@ -46,7 +44,7 @@ void TileMap::Render(sf::RenderWindow* window)
 	{
 		for (int j = 0; j < this->columnCounter; j++)
 		{
-			this->map->at(i * columnCounter + j)->setPosition(j * 32, i * 32);
+			//this->map->at(i * columnCounter + j)->setPosition(j * 32, i * 32);
 			window->draw(*this->map->at(i * columnCounter + j));
 		}
 	}

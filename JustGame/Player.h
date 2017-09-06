@@ -13,6 +13,7 @@ public:
 	Player(BulletHandler* bulletHandler);
 	void Update();
 	void Render(sf::RenderWindow* window);
+	void checkInput();
 	~Player();
 
 public:

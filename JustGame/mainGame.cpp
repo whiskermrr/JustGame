@@ -15,7 +15,7 @@ void mainGame::Render(sf::RenderWindow* window)
 void mainGame::Update(sf::RenderWindow* window)
 {
 	this->entityHandler->Update();
-	this->entityHandler->checkCollisions();
+	//this->entityHandler->checkCollisions();
 }
 
 void mainGame::Destroy(sf::RenderWindow* window)

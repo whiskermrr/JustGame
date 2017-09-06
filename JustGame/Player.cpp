@@ -16,6 +16,20 @@ Player::Player(BulletHandler* bulletHandler)
 
 void Player::Update()
 {
+	checkInput();
+
+	this->setTextureRect(sf::IntRect(this->source.x * 64, this->source.y * 64, 64, 64));
+
+	this->rangeWeapon->setPosition(this->getPosition());
+	this->rangeWeapon->Update();
+	Entity::Update();
+
+	this->velocity.x = 0;
+	this->velocity.y = 0;
+}
+
+void Player::checkInput()
+{
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && canMove())
 	{
 		this->source.y = UP;
@@ -50,25 +64,13 @@ void Player::Update()
 	}
 
 	if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) ||
-		  sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)))
+		sf::Keyboard::isKeyPressed(sf::Keyboard::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::A)))
 	{
 		source.x = 0;
 	}
 
 	if (source.x * 64 >= 576)
 		source.x = 0;
-
-	this->setTextureRect(sf::IntRect(this->source.x * 64, this->source.y * 64, 64, 64));
-
-	this->rangeWeapon->setPosition(this->getPosition());
-	this->rangeWeapon->Update();
-	Entity::Update();
-
-	this->velocity.x = 0;
-	this->velocity.y = 0;
-
-	int x = this->getPosition().x / 32;
-	int y = this->getPosition().y / 32;
 }
 
 void Player::Render(sf::RenderWindow* window)
