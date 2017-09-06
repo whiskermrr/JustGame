@@ -17,6 +17,7 @@ public:
 	~BulletHandler();
 	void Reset(sf::RenderWindow* window);
 	void addBullet(Bullet* bullet);
+	std::vector<Bullet*>* getBullets();
 
 private:
 

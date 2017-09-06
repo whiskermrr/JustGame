@@ -6,6 +6,9 @@
 #include <ctype.h>
 #include <string>
 #include <fstream>
+#include <vector>
+#include "Tile.h"
+#include <iostream>
 
 class TileMap
 {
@@ -13,22 +16,15 @@ public:
 
 	TileMap(std::string fileName);
 	void Render(sf::RenderWindow* window);
+	std::vector<Tile*>* getTiles();
 	~TileMap();
 	
 
 private:
-	sf::Texture* grassTexture;
-	sf::Texture* stoneTexture;
-	sf::Texture* railTexture;
-	sf::Texture* woodTexture;
 
-	sf::Sprite* grassTile;
-	sf::Sprite* stoneTile;
-	sf::Sprite* railTile;
-	sf::Sprite* woodTile;
-
-	int map[150][150];
-
+	int rowCounter;
+	int columnCounter;
+	std::vector<Tile*> *map;
 };
 
 #endif

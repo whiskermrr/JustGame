@@ -15,6 +15,11 @@ void Bullet::Update()
 	Entity::Update();
 }
 
+bool Bullet::checkCollisionWithWall(Tile* tile)
+{
+	return this->getGlobalBounds().intersects(tile->getGlobalBounds());
+}
+
 
 Bullet::~Bullet()
 {

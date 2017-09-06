@@ -3,7 +3,6 @@
 #define MAINSTATE_H
 
 #include "state.h"
-#include "TileMap.h"
 #include "EntityHandler.h"
 
 
@@ -20,7 +19,6 @@ public:
 
 private:
 
-	TileMap* tileMap;
 	EntityHandler* entityHandler;
 };
 

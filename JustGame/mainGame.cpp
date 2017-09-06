@@ -3,28 +3,25 @@
 
 void mainGame::Initiate(sf::RenderWindow* window)
 {
-	this->tileMap = new TileMap("resources/tile.txt");
 	this->entityHandler = new EntityHandler(window);
 	this->entityHandler->Initiate();
 }
 
 void mainGame::Render(sf::RenderWindow* window)
 {
-	this->tileMap->Render(window);
 	this->entityHandler->Render();
 }
 
 void mainGame::Update(sf::RenderWindow* window)
 {
 	this->entityHandler->Update();
+	this->entityHandler->checkCollisions();
 }
 
 void mainGame::Destroy(sf::RenderWindow* window)
 {
-	delete this->tileMap;
 	delete this->entityHandler;
 
-	this->tileMap = NULL;
 	this->entityHandler = NULL;
 }
 

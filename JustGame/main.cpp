@@ -6,7 +6,7 @@ sf::Vector2f screenDimensions(1366, 768);
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "mrr", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode(screenDimensions.x, screenDimensions.y), "mrr");
 
 	window.setFramerateLimit(60);
 

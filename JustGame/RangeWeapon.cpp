@@ -62,7 +62,7 @@ void RangeWeapon::calculateAim()
 		this->angle += 270;
 	}
 
-	std::cout << "velo x: " << this->velocity.x << " velo y: " << this->velocity.y << " angle: " << this->angle << " sinus: " << sinus << std::endl;
+	//std::cout << "velo x: " << this->velocity.x << " velo y: " << this->velocity.y << " angle: " << this->angle << " sinus: " << sinus << std::endl;
 }
 
 void RangeWeapon::setBulletHandler(BulletHandler* bulletHandler)

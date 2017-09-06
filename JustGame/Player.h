@@ -2,12 +2,12 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "Entity.h"
+#include "Creature.h"
 #include "RangeWeapon.h"
 
 enum Direction { UP, LEFT, DOWN, RIGHT };
 
-class Player : public Entity
+class Player : public Creature
 {
 public:
 	Player(BulletHandler* bulletHandler);
@@ -16,10 +16,8 @@ public:
 	~Player();
 
 public:
-	sf::Vector2i source;
 	BulletHandler* bulletHandler;
 	RangeWeapon* rangeWeapon;
-
 };
 
 #endif
