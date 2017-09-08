@@ -17,6 +17,8 @@ public:
 	TileMap(std::string fileName);
 	void Render(sf::RenderWindow* window);
 	std::vector<Tile*>* getTiles();
+	int getRows();
+	int getColumns();
 	~TileMap();
 	
 

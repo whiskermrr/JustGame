@@ -50,6 +50,16 @@ void TileMap::Render(sf::RenderWindow* window)
 	}
 }
 
+int TileMap::getRows()
+{
+	return this->rowCounter;
+}
+
+int TileMap::getColumns()
+{
+	return this->columnCounter;
+}
+
 TileMap::~TileMap()
 {
 	for (std::vector<Tile*>::iterator it = this->map->begin(); it != this->map->end(); it++)

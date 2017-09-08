@@ -56,18 +56,11 @@ void EntityHandler::checkCollisions()
 	}
 	*/
 	
-	
+	/*
 	for (std::vector<Tile*>::iterator tile = this->tileMap->getTiles()->begin(); tile != this->tileMap->getTiles()->end(); tile++)
 	{
 		if ((*tile)->isWall())
 		{
-		/*
-			if (this->player->checkCollisionWithWall(*tile))
-			{
-				//this->player->setMove(false);
-				std::cout << "Collision" << std::endl;
-			}
-		*/
 			for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
 				bullet != this->bulletHandler->getBullets()->end();)
 			{
@@ -83,7 +76,28 @@ void EntityHandler::checkCollisions()
 
 		}
 	}
+	*/
 	
+	for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
+		bullet != this->bulletHandler->getBullets()->end(); )
+	{
+		int x = (*bullet)->getPosition().x / 32;
+		int y = (*bullet)->getPosition().y / 32;
+
+		if (this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x)->isWall())
+		{
+			if ((*bullet)->checkCollisionWithWall(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x)))
+			{
+				delete *bullet;
+				bullet = this->bulletHandler->getBullets()->erase(bullet);
+			}
+
+			else
+				bullet++;
+		}
+		else
+			bullet++;
+	}
 
 }
 
