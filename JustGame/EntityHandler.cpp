@@ -28,56 +28,9 @@ void EntityHandler::Render()
 	this->player->Render(this->window);
 	this->bulletHandler->Render(this->window);
 }
-// TODO fix this collision and make it better (preformance)
+
 void EntityHandler::checkCollisions()
 {
-	/*
-	for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
-		bullet != this->bulletHandler->getBullets()->end();)
-	{
-		sf::Vector2f bulletPosition = (*bullet)->getPosition();
-		int x = bulletPosition.x / 32;
-		int y = bulletPosition.y / 32;
-
-		if (this->tileMap->getTiles()->at(y * 26 + x)->isWall())
-		{
-			if ((*bullet)->CheckCollision(this->tileMap->getTiles()->at(y * 26 + x)))
-			{
-				std::cout << "Collision" << std::endl;
-				delete *bullet;
-				bullet = this->bulletHandler->getBullets()->erase(bullet);
-			}
-
-			else
-				bullet++;
-		}
-
-		else bullet++;
-	}
-	*/
-	
-	/*
-	for (std::vector<Tile*>::iterator tile = this->tileMap->getTiles()->begin(); tile != this->tileMap->getTiles()->end(); tile++)
-	{
-		if ((*tile)->isWall())
-		{
-			for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
-				bullet != this->bulletHandler->getBullets()->end();)
-			{
-				if ((*bullet)->CheckCollision(*tile))
-				{
-					delete *bullet;
-					bullet = this->bulletHandler->getBullets()->erase(bullet);
-				}
-
-				else
-					bullet++;
-			}
-
-		}
-	}
-	*/
-	
 	for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
 		bullet != this->bulletHandler->getBullets()->end(); )
 	{
@@ -98,7 +51,6 @@ void EntityHandler::checkCollisions()
 		else
 			bullet++;
 	}
-
 }
 
 EntityHandler::~EntityHandler()

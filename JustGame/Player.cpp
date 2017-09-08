@@ -6,7 +6,7 @@ Player::Player(BulletHandler* bulletHandler)
 	this->LoadTexture("soldier.png");
 	this->source.x = 0;
 	this->source.y = DOWN;
-	this->setTextureRect(sf::IntRect(this->source.x * 64, this->source.y * 64, 64, 64));
+	this->setTextureRect(sf::IntRect(this->source.x * 32, this->source.y * 47, 32, 47));
 	this->setPosition(50, 50);
 	this->bulletHandler = bulletHandler;
 
@@ -18,7 +18,7 @@ void Player::Update()
 {
 	checkInput();
 
-	this->setTextureRect(sf::IntRect(this->source.x * 64, this->source.y * 64, 64, 64));
+	this->setTextureRect(sf::IntRect(this->source.x * 32, this->source.y * 47, 32, 47));
 
 	this->rangeWeapon->setPosition(this->getPosition());
 	this->rangeWeapon->Update();
