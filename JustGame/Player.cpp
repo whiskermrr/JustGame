@@ -68,7 +68,7 @@ void Player::checkInput()
 		source.x = 0;
 	}
 
-	if (source.x * 64 >= 576)
+	if (source.x * 32 >= 288)
 		source.x = 0;
 }
 

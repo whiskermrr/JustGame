@@ -31,7 +31,51 @@ void EntityHandler::Render()
 
 void EntityHandler::checkCollisions()
 {
+	std::vector<Tile*> *playerTiles = new std::vector<Tile*>();
 
+	int x = player->getPosition().x / 32;
+	int y = player->getPosition().y / 32;
+
+	playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x));
+	playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x + 1));
+	playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x));
+	playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x + 1));
+	playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x));
+	playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x + 1));
+
+	for (int i = 0; i != playerTiles->size(); i++)
+	{
+		if (playerTiles->at(i)->isWall() && player->checkCollisionWithWall(playerTiles->at(i)))
+		{
+			if (i == 0 || i == 1)
+				player->setMoveUp(false);
+
+			if (i == 2)
+				player->setMoveLeft(false);
+
+			if (i == 3)
+				player->setMoveRight(false);
+
+			if (i == 4 || i == 5)
+				player->setMoveDown(false);
+			
+		}
+
+		else
+		{
+			if (i == 0 || i == 1)
+				player->setMoveUp(true);
+
+			if (i == 2)
+				player->setMoveLeft(true);
+
+			if (i == 3)
+				player->setMoveRight(true);
+
+			if (i == 4 || i == 5)
+				player->setMoveDown(true);
+		}
+	}
 
 	for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
 		bullet != this->bulletHandler->getBullets()->end(); )
