@@ -17,7 +17,6 @@ Player::Player(BulletHandler* bulletHandler)
 void Player::Update()
 {
 	checkInput();
-
 	this->setTextureRect(sf::IntRect(this->source.x * 32, this->source.y * 47, 32, 47));
 
 	this->rangeWeapon->setPosition(this->getPosition());
@@ -30,28 +29,28 @@ void Player::Update()
 
 void Player::checkInput()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && canMove())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && canMoveUp())
 	{
 		this->source.y = UP;
 		this->velocity.y = -2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && canMove())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && canMoveDown())
 	{
 		this->source.y = DOWN;
 		this->velocity.y = 2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && canMove())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && canMoveRight())
 	{
 		this->source.y = RIGHT;
 		this->velocity.x = 2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && canMove())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && canMoveLeft())
 	{
 		this->source.y = LEFT;
 		this->velocity.x = -2;

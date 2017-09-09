@@ -31,6 +31,8 @@ void EntityHandler::Render()
 
 void EntityHandler::checkCollisions()
 {
+
+
 	for (std::vector<Bullet*>::iterator bullet = this->bulletHandler->getBullets()->begin();
 		bullet != this->bulletHandler->getBullets()->end(); )
 	{

@@ -7,7 +7,18 @@ Creature::Creature()
 	this->setHitPoints(100);
 	this->setArmor(0);
 	this->isDead = false;
-	this->_canMove = true;
+	_canMoveUp = true;
+	_canMoveDown = true;
+	_canMoveRight = true;
+	_canMoveLeft = true;
+}
+
+void Creature::Update()
+{
+	top = this->getPosition().y;
+	bottom = this->getPosition().y + this->getTextureRect().height;
+	left = this->getPosition().x;
+	right = this->getPosition().y + this->getTextureRect().width;
 }
 
 sf::Vector2i Creature::getSource()
@@ -46,14 +57,44 @@ int Creature::getArmor()
 	return creatureAttributes.armor;
 }
 
-bool Creature::canMove()
+bool Creature::canMoveUp()
 {
-	return _canMove;
+	return _canMoveUp;
 }
 
-void Creature::setMove(bool canMove)
+bool Creature::canMoveDown()
 {
-	this->_canMove = canMove;
+	return _canMoveDown;
+}
+
+bool Creature::canMoveRight()
+{
+	return _canMoveRight;
+}
+
+bool Creature::canMoveLeft()
+{
+	return _canMoveLeft;
+}
+
+void Creature::setMoveUp(bool canMove)
+{
+	_canMoveUp = canMove;
+}
+
+void Creature::setMoveDown(bool canMove)
+{
+	_canMoveDown = canMove;
+}
+
+void Creature::setMoveRight(bool canMove)
+{
+	_canMoveRight = canMove;
+}
+
+void Creature::setMoveLeft(bool canMove)
+{
+	_canMoveLeft = canMove;
 }
 
 // TODO make better collision system with wall
