@@ -25,6 +25,7 @@ private:
 	BulletHandler* bulletHandler;
 	TileMap* tileMap;
 	std::vector<Player*> *playerHandler; // maybe i will create class called PlayerHandler
+	std::vector<Tile*> *playerTiles;
 
 	
 

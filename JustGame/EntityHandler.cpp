@@ -13,6 +13,7 @@ void EntityHandler::Initiate()
 	this->playerHandler = new std::vector<Player*>();
 	this->player = new Player(bulletHandler);
 	this->playerHandler->push_back(this->player);
+	this->playerTiles = new std::vector<Tile*>();
 }
 
 
@@ -31,17 +32,15 @@ void EntityHandler::Render()
 
 void EntityHandler::checkCollisions()
 {
-	std::vector<Tile*> *playerTiles = new std::vector<Tile*>();
-
 	int x = player->getPosition().x / 32;
 	int y = player->getPosition().y / 32;
 
-	playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x));
-	playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x + 1));
-	playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x));
-	playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x + 1));
-	playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x));
-	playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x + 1));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at(y * this->tileMap->getColumns() + x + 1));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at((y + 1) * this->tileMap->getColumns() + x + 1));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x));
+	this->playerTiles->push_back(this->tileMap->getTiles()->at((y + 2) * this->tileMap->getColumns() + x + 1));
 
 	for (int i = 0; i != playerTiles->size(); i++)
 	{
@@ -97,6 +96,8 @@ void EntityHandler::checkCollisions()
 		else
 			bullet++;
 	}
+
+	this->playerTiles->clear();
 }
 
 EntityHandler::~EntityHandler()
