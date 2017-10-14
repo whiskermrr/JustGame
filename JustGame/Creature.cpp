@@ -4,13 +4,9 @@
 
 Creature::Creature()
 {
-	this->setHitPoints(100);
+	this->setHitPoints(PLAYER_START_HIT_POINTS);
 	this->setArmor(0);
 	this->isDead = false;
-	_canMoveUp = true;
-	_canMoveDown = true;
-	_canMoveRight = true;
-	_canMoveLeft = true;
 }
 
 void Creature::Update()
@@ -57,51 +53,51 @@ int Creature::getArmor()
 	return creatureAttributes.armor;
 }
 
-bool Creature::canMoveUp()
+void Creature::checkCollisionWithWall()
 {
-	return _canMoveUp;
+
+	float playerX = this->getPosition().x;
+	float playerY = this->getPosition().y;
+
+	for (int i = 0; i != this->tiles->size(); i++)
+	{
+		if (this->tiles->at(i)->isWall() && this->CheckCollision(this->tiles->at(i)))
+		{
+			if (i == 0)
+			{
+				if (this->top < this->tiles->at(0)->bottom - PLAYER_SPEED)
+					playerX = playerX + PLAYER_KNOCK;
+				else
+					playerY = playerY + PLAYER_KNOCK;
+			}
+			else if (i == 1)
+			{
+				if (this->top < this->tiles->at(1)->bottom - PLAYER_SPEED)
+					playerX = playerX - PLAYER_KNOCK;
+				else
+					playerY = playerY + PLAYER_KNOCK;
+			}
+
+			else if (i == 2)
+				playerX = playerX + PLAYER_KNOCK;
+
+			else if (i == 3)
+				playerX = playerX - PLAYER_KNOCK;
+
+			else if (i == 4)
+				playerY = playerY - PLAYER_KNOCK;
+
+			else if (i == 5)
+				playerY = playerY - PLAYER_KNOCK;
+
+			this->setPosition(playerX, playerY);
+		}
+	}
 }
 
-bool Creature::canMoveDown()
+void Creature::setTiles(std::vector<Tile*> *tiles)
 {
-	return _canMoveDown;
-}
-
-bool Creature::canMoveRight()
-{
-	return _canMoveRight;
-}
-
-bool Creature::canMoveLeft()
-{
-	return _canMoveLeft;
-}
-
-void Creature::setMoveUp(bool canMove)
-{
-	_canMoveUp = canMove;
-}
-
-void Creature::setMoveDown(bool canMove)
-{
-	_canMoveDown = canMove;
-}
-
-void Creature::setMoveRight(bool canMove)
-{
-	_canMoveRight = canMove;
-}
-
-void Creature::setMoveLeft(bool canMove)
-{
-	_canMoveLeft = canMove;
-}
-
-// TODO make better collision system with wall
-
-bool Creature::checkCollisionWithWall(Tile* tile)
-{
-	return this->getGlobalBounds().intersects(tile->getGlobalBounds());
+	this->tiles = tiles;
 }
 
 

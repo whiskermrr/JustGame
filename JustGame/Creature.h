@@ -3,6 +3,10 @@
 #include "CreatureAttributes.h"
 #include "Tile.h"
 
+#define PLAYER_SPEED 2
+#define PLAYER_KNOCK 4
+#define PLAYER_START_HIT_POINTS 100
+
 class Creature :
 	public Entity
 {
@@ -16,26 +20,16 @@ public:
 	int getHitPoints();
 	void setArmor(int armor);
 	int getArmor();
-	bool canMoveUp();
-	bool canMoveDown();
-	bool canMoveRight();
-	bool canMoveLeft();
-	void setMoveLeft(bool canMove);
-	void setMoveRight(bool canMove);
-	void setMoveUp(bool canMove);
-	void setMoveDown(bool canMove);
-	bool checkCollisionWithWall(Tile* tile);
+	void checkCollisionWithWall();
+	void setTiles(std::vector<Tile*> *tiles);
 	~Creature();
 
 public:
 
 	sf::Vector2i source;
 	CreatureAttributes creatureAttributes;
+	std::vector<Tile*> *tiles;
 	bool isDead;
-	bool _canMoveUp;
-	bool _canMoveDown;
-	bool _canMoveRight;
-	bool _canMoveLeft;
 	float right;
 	float left;
 	float top;

@@ -14,11 +14,18 @@ public:
 	bool isWall();
 	void setIsWall(bool isItWall);
 	TileType getTileType();
+	void setBorders();
 	~Tile();
 
 private:
 
 	bool _isWall;
 	TileType tileType;
+
+public:
+	float right;
+	float left;
+	float top;
+	float bottom;
 };
 

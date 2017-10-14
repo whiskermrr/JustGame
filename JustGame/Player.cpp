@@ -22,6 +22,7 @@ void Player::Update()
 	this->rangeWeapon->setPosition(this->getPosition());
 	this->rangeWeapon->Update();
 	Entity::Update();
+	Creature::Update();
 
 	this->velocity.x = 0;
 	this->velocity.y = 0;
@@ -29,28 +30,28 @@ void Player::Update()
 
 void Player::checkInput()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && canMoveUp())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		this->source.y = UP;
 		this->velocity.y = -2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && canMoveDown())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		this->source.y = DOWN;
 		this->velocity.y = 2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && canMoveRight())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		this->source.y = RIGHT;
 		this->velocity.x = 2;
 		source.x++;
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && canMoveLeft())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		this->source.y = LEFT;
 		this->velocity.x = -2;

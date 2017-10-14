@@ -20,6 +20,7 @@ TileMap::TileMap(std::string fileName)
 			{
 				Tile* tile = new Tile(x - '0');
 				tile->setPosition(columnCounter * 32, rowCounter * 32);
+				tile->setBorders();
 				this->map->push_back(tile);
 				columnCounter++;
 			}

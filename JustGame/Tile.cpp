@@ -55,6 +55,14 @@ Tile::Tile(int tileType)
 	}
 }
 
+void Tile::setBorders()
+{
+	top = this->getPosition().y;
+	bottom = this->getPosition().y + this->getTextureRect().height;
+	left = this->getPosition().x;
+	right = this->getPosition().y + this->getTextureRect().width;
+}
+
 bool Tile::isWall()
 {
 	return this->_isWall;
